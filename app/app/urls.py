@@ -19,7 +19,10 @@ from drf_spectacular.views import (
 )
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from user import views
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +31,7 @@ urlpatterns = [
         'api/docs/',
         SpectacularSwaggerView.as_view(url_name='api-shema'),
         name = 'api-docs',
-    )
+    ),
+    path('api/user/', include('user.urls')),
+
 ]
